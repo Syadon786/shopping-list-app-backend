@@ -51,7 +51,7 @@ p {
   color: #00204a;
 }
 
-form {
+form.item {
   text-align: center;
   margin-left: 20px;
 }
@@ -102,4 +102,22 @@ footer {
   color: white;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
+}
+
+@media (max-width: 768px) {
+    button {
+      width: 50px;
+      aspect-ratio: 1 / 1;
+      left: 10px;
+    }
+
+    input[type="text"] {
+      width: 250px;
+    }
+
+    p {
+      word-wrap: break-word;
+      padding: 20px 10px;
+      width: 80%;
+    }
 }
