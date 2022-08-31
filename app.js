@@ -2,10 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const date = require(__dirname + "/date.js");
 const mongoose = require('mongoose');
+require('dotenv').config();
 const app = express();
 
 
-mongoose.connect("mongodb://localhost:27017/shoppinglistDB");
+mongoose.connect(process.env.DATABASE_URL);
 const itemsSchema = mongoose.Schema({
     name: {
         type: String,
