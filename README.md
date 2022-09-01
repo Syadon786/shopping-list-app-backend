@@ -27,3 +27,5 @@ Hosted with MongoDB Atlas on an AWS M0 sandbox cluster.
         </tr>
     </tbody>
 </table>
+
+Web app is deployed on Heroku: https://syadon-shoppinglist.herokuapp.com/
