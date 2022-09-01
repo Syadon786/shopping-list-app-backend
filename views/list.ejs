@@ -5,15 +5,22 @@
   </div>
   <div class="box">
       <% newListItems.forEach(item => { %>
-        <form action="/delete" method="post">
+        <% if(listid == null) { %>
+          <form action="/delete" method="post">
+        <% } else { %>
+          <form action=<%=`/delete/${listid}` %> method="post">
+        <% } %>
           <div class="item" id="<%= item._id %>">
               <input type="checkbox" name="checkbox" value="<%=item._id%>" onChange="this.form.submit()">
               <p> <%= item.name %> </p>
           </div>
         </form>
       <% }); %>
-
-      <form action="/" method="post" class="item">
+      <% if(listid == null) { %>
+        <form action="/" method="post" class="item">
+      <% } else { %>
+        <form action=<%= `/list/${listid}` %> method="post" class="item">
+      <% } %>
         <input type="text" name="newItem" placeholder="Új termék" autocomplete="off" required>
         <button type="submit" name="list" value=<%= listTitle %>><span>+</span></button>  
       </form>
