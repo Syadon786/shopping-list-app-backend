@@ -65,7 +65,7 @@ app.get('/list/:listid', (req, res) => {
     const listId = _.lowerCase(req.params.listid);
     List.findOne({listid : listId}, (err, foundList) => {
         if(err) return console.log(err);
-        if(!foundList) res.redirect('/');
+        if(!foundList) return res.redirect('/');
         res.render('list', {listTitle: `${day}  Bevásárlólista`, newListItems: foundList.items, listid: listId});
     });  
 });
@@ -75,7 +75,6 @@ app.post('/list/:listid', (req, res) => {
     const listId = _.lowerCase(req.params.listid);
     List.findOne({listid : listId}, (err, foundList) => { 
         if(err) return console.log(err);
-        if(!foundList) res.redirect('/');
         const item = new Item({
             name: req.body.newItem,
         });
