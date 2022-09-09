@@ -43,10 +43,12 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     List.findOne({listid : "test"}, (err, foundList) => { 
         if(err) return console.log(err);
-        const item = new Item({
-            name: req.body.newItem,
-        });
-        foundList.items.push(item);
+        
+        const items = req.body.newItems.split(',')
+        .filter(item => item)
+        .map(item => new Item({name: item}));
+
+        foundList.items.push(...items);     
         foundList.save();
         res.redirect("/");
     });
@@ -75,10 +77,12 @@ app.post('/list/:listid', (req, res) => {
     const listId = _.lowerCase(req.params.listid);
     List.findOne({listid : listId}, (err, foundList) => { 
         if(err) return console.log(err);
-        const item = new Item({
-            name: req.body.newItem,
-        });
-        foundList.items.push(item);
+        
+        const items = req.body.newItems.split(',')
+        .filter(item => item)
+        .map(item => new Item({name: item}));
+
+        foundList.items.push(...items);     
         foundList.save();
         res.redirect(`/list/${listId}`);
     });

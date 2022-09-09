@@ -21,7 +21,7 @@
       <% } else { %>
         <form action=<%= `/list/${listid}` %> method="post" class="item">
       <% } %>
-        <input type="text" name="newItem" placeholder="Új termék" autocomplete="off" required>
+        <input type="text" name="newItems" placeholder="Új termék" autocomplete="off" required>
         <button type="submit" name="list" value=<%= listTitle %>><span>+</span></button>  
       </form>
   </div>
